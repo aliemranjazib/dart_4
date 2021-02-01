@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lec_2/custombutton.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,27 +29,15 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            myButton(),
-            myButton(),
-            myButton(),
-            myButton(),
+            CustomButton(
+              title: "one",
+              onpressed: () {
+
+              },
+            ),
           ],
         ),
       ),
     );
   }
-}
-
-Widget myButton() {
-  return MaterialButton(
-    color: Colors.blue,
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        "clicke me",
-        style: TextStyle(fontSize: 20),
-      ),
-    ),
-    onPressed: () {},
-  );
 }
