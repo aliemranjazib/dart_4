@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lec_2/custombutton.dart';
+import 'package:lec_2/lect_3_bilcalculator.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Whatsapp"),
+        title: Text("Bill Counter"),
       ),
       body: Center(
         child: Column(
@@ -32,7 +33,8 @@ class HomePage extends StatelessWidget {
             CustomButton(
               title: "one",
               onpressed: () {
-
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BillCounter()));
               },
             ),
           ],
