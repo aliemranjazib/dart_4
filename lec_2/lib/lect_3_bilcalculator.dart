@@ -6,9 +6,9 @@ class BillCounter extends StatefulWidget {
 }
 
 class _BillCounterState extends State<BillCounter> {
-  double billAMount = 50.0;
-
-  int _personCounter = 5;
+  double billAMount = 0.0;
+  int _personCounter = 1;
+  double _tipPercentage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class _BillCounterState extends State<BillCounter> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "total amount",
+                      "total amount per person",
                       style: TextStyle(fontSize: 20),
                     ),
                     Text(
-                      "$billAMount \$",
+                      "${billCalculator(_personCounter, billAMount).toString()} \$",
                       style: TextStyle(fontSize: 30),
                     ),
                   ],
@@ -49,6 +49,11 @@ class _BillCounterState extends State<BillCounter> {
             child: Column(
               children: [
                 TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      billAMount = double.parse(value);
+                    });
+                  },
                   decoration: InputDecoration(
                       labelText: "Bill amount",
                       prefixIcon: Icon(Icons.attach_money)),
@@ -56,7 +61,7 @@ class _BillCounterState extends State<BillCounter> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("person counter"),
+                    Text("split by"),
                     Container(
                       child: Row(
                         children: [
@@ -82,7 +87,7 @@ class _BillCounterState extends State<BillCounter> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                if (_personCounter > 0) {
+                                if (_personCounter > 1) {
                                   _personCounter--;
                                 }
                               });
@@ -101,11 +106,59 @@ class _BillCounterState extends State<BillCounter> {
                     )
                   ],
                 ),
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                    height: 40,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.purple.shade100,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Tip is",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        Text(
+                          "40 \$",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    )),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "$_tipPercentage %",
+                  style: TextStyle(fontSize: 30),
+                ),
+                Slider(
+                  value: _tipPercentage,
+                  min: 0,
+                  max: 100,
+                  divisions: 10,
+                  onChanged: (val) {
+                    setState(() {
+                      _tipPercentage = val;
+                    });
+                  },
+                ),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  billCalculator(int splitby, double totalamount) {
+    var totalbillamount = 0.0;
+    totalbillamount = totalamount / splitby;
+
+    return totalbillamount;
   }
 }
