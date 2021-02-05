@@ -32,7 +32,7 @@ class _BillCounterState extends State<BillCounter> {
                       style: TextStyle(fontSize: 20),
                     ),
                     Text(
-                      "${billCalculator(_personCounter, billAMount).toString()} \$",
+                      "${billCalculator(_personCounter, billAMount, _tipPercentage).toString()} \$",
                       style: TextStyle(fontSize: 30),
                     ),
                   ],
@@ -124,7 +124,7 @@ class _BillCounterState extends State<BillCounter> {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text(
-                          "40 \$",
+                          "${tipCalculator(billAMount, _tipPercentage)} \$",
                           style: TextStyle(fontSize: 20),
                         ),
                       ],
@@ -155,10 +155,20 @@ class _BillCounterState extends State<BillCounter> {
     );
   }
 
-  billCalculator(int splitby, double totalamount) {
+  billCalculator(int splitby, double billamount, double tippercentage) {
     var totalbillamount = 0.0;
-    totalbillamount = totalamount / splitby;
+    totalbillamount =
+        (tipCalculator(billamount, tippercentage) + billAMount) / splitby;
 
     return totalbillamount;
+  }
+
+  tipCalculator(double billamount, double tippercentage) {
+    var tippercentage = 0.0;
+    if (billAMount < 0 || billAMount == null) {
+    } else {
+      tippercentage = (billAMount * _tipPercentage) / 100;
+    }
+    return tippercentage;
   }
 }

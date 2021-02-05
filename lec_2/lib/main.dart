@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lec_2/custombutton.dart';
 import 'package:lec_2/lect_3_bilcalculator.dart';
+import 'package:lec_2/quizapp/quiz_app.dart';
 import 'package:lec_2/secondScreen.dart';
+import 'package:lec_2/task1/task_1.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Title',
       theme: ThemeData(primarySwatch: Colors.red),
-      home: HomePage(),
+      home: QuizApp(),
     );
   }
 }
