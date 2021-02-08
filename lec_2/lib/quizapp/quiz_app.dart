@@ -56,27 +56,28 @@ class _QuizAppState extends State<QuizApp> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          FlatButton(
+                          MaterialButton(
+                            elevation: 5,
                             color: Colors.white,
                             child: Text("TRUE"),
-                            onPressed: () {},
+                            onPressed: () {
+                              _checkAnswer(true);
+                            },
                           ),
-                          FlatButton(
+                          MaterialButton(
+                            elevation: 5,
                             color: Colors.white,
                             child: Text("FALSE"),
-                            onPressed: () {},
+                            onPressed: () {
+                              _checkAnswer(false);
+                            },
                           ),
-                          FlatButton(
+                          MaterialButton(
+                            elevation: 5,
                             color: Colors.white,
                             child: Icon(Icons.arrow_forward),
                             onPressed: () {
-                              setState(() {
-                                if (_questionIndex < questions.length - 1) {
-                                  _questionIndex++;
-                                } else {
-                                  _questionIndex = 0;
-                                }
-                              });
+                              _increments();
                             },
                           ),
                         ],
@@ -89,5 +90,30 @@ class _QuizAppState extends State<QuizApp> {
         ),
       ),
     );
+  }
+
+  void _increments() {
+    setState(() {
+      (_questionIndex < questions.length - 1)
+          ? _questionIndex++
+          : _questionIndex = 0;
+    });
+  }
+
+  void _checkAnswer(bool isTrue) {
+    if (isTrue == questions[_questionIndex].isCorrect) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        action: SnackBarAction(label: "cancel", onPressed: () {}),
+        duration: Duration(milliseconds: 1500),
+        content: Text("TRUE"),
+      ));
+      _increments();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        action: SnackBarAction(label: "cancel", onPressed: () {}),
+        duration: Duration(milliseconds: 1500),
+        content: Text("FALSE"),
+      ));
+    }
   }
 }

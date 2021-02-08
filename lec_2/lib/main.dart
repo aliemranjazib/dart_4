@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lec_2/custombutton.dart';
-import 'package:lec_2/lect_3_bilcalculator.dart';
-import 'package:lec_2/quizapp/quiz_app.dart';
-import 'package:lec_2/secondScreen.dart';
-import 'package:lec_2/task1/task_1.dart';
+import 'package:lec_2/Whatsapp_clone/lect_5_whatsapp_ui.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,8 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Title',
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: QuizApp(),
+      theme: ThemeData(brightness: Brightness.dark),
+      home: WhatsappUi(),
     );
   }
 }
@@ -29,7 +25,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Bill Counter"),
       ),
-      body: BillCounter(),
+      body: WhatsappUi(),
     );
   }
 }
