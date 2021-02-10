@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lec_2/Whatsapp_clone/lect_5_whatsapp_ui.dart';
+
+import 'lect_6 Whatsapp_clone_completed_/lect_5_whatsapp_ui.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,18 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Title',
       theme: ThemeData(brightness: Brightness.dark),
       home: WhatsappUi(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Bill Counter"),
-      ),
-      body: WhatsappUi(),
     );
   }
 }
