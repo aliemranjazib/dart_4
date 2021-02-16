@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lec_2/Whatsapp_clone_completed/model/chatmodel.dart';
+import 'package:lec_2/lect_6%20Whatsapp_clone_completed_/model/chatmodel.dart';
 
 class WhatsappUi extends StatelessWidget {
   @override
