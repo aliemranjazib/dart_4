@@ -3,12 +3,10 @@ import 'package:lec_2/food_app/data/category_date.dart';
 import 'package:lec_2/food_app/screens/categorydetails.dart';
 
 class FoodGrid extends StatelessWidget {
-  newScreen(BuildContext context, String titletext) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return CategorySingle(
-        title: titletext,
-      );
-    }));
+  static const categoryRout = "/category-meals";
+  newScreen(BuildContext context, String titletext, String id) {
+    Navigator.of(context)
+        .pushNamed(categoryRout, arguments: {"title": titletext, "id": id});
   }
 
   @override
@@ -20,12 +18,12 @@ class FoodGrid extends StatelessWidget {
             childAspectRatio: 3 / 2,
             crossAxisSpacing: 15,
             mainAxisSpacing: 15),
-        children: categories
+        children: CATAGEORY_DATA
             .map((e) => InkWell(
                   splashColor: Colors.pink,
                   borderRadius: BorderRadius.circular(20),
                   onTap: () {
-                    newScreen(context, e.title);
+                    newScreen(context, e.title, e.id);
                   },
                   child: Container(
                     alignment: Alignment.center,

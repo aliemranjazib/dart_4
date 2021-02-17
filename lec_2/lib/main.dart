@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lec_2/food_app/customWidget/gridWidget.dart';
 import 'package:lec_2/food_app/screens/category.dart';
 import 'package:lec_2/food_app/screens/categorydetails.dart';
 
@@ -23,9 +24,9 @@ class MyApp extends StatelessWidget {
                 fontSize: 25,
                 color: Colors.white,
               ))),
-      home: CategoryScreen(),
       routes: {
-        '/category-screen': (_) => CategorySingle(),
+        "/": (context) => CategoryScreen(),
+        FoodGrid.categoryRout: (context) => CategorySingle()
       },
     );
   }

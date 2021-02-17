@@ -1,7 +1,7 @@
 import 'package:lec_2/food_app/model/category_list.dart';
 import 'package:flutter/material.dart';
 
-List<Category> categories = [
+const CATAGEORY_DATA = const [
   Category(
     id: 'c1',
     title: 'Italian',
@@ -53,4 +53,3 @@ List<Category> categories = [
     color: Colors.teal,
   ),
 ];
-
