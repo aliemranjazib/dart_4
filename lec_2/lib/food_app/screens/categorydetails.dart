@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lec_2/food_app/customWidget/meals-item.dart';
 import 'package:lec_2/food_app/data/meals-data.dart';
 
 class CategorySingle extends StatelessWidget {
@@ -16,33 +17,15 @@ class CategorySingle extends StatelessWidget {
         title: Text(categoryTitle),
       ),
       body: ListView.builder(
+        shrinkWrap: true,
         itemCount: categorymeals.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            child: Card(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Image.network(
-                        categorymeals[index].imageUrl,
-                        fit: BoxFit.fitWidth,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(categorymeals[index].title),
-                      ),
-                      ExpansionTile(
-                        title: Text("steps to make this recipe"),
-                        children: [
-                          ListTile(
-                              title:
-                                  Text(categorymeals[index].steps.toString()))
-                        ],
-                      )
-                    ],
-                  )),
-            ),
+          return MealsItem(
+            title: categorymeals[index].title,
+            imageUrl: categorymeals[index].imageUrl,
+            duration: categorymeals[index].duration,
+            complexity: categorymeals[index].complexity,
+            affordability: categorymeals[index].affordability,
           );
         },
       ),

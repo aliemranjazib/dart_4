@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lec_2/food_app/customWidget/gridWidget.dart';
 import 'package:lec_2/food_app/screens/category.dart';
 import 'package:lec_2/food_app/screens/categorydetails.dart';
+import 'package:lec_2/food_app/screens/moredetail.dart';
+import 'package:lec_2/task1/task_1.dart';
 
 import 'lect_6 Whatsapp_clone_completed_/lect_5_whatsapp_ui.dart';
 
@@ -25,8 +27,9 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ))),
       routes: {
-        "/": (context) => CategoryScreen(),
-        FoodGrid.categoryRout: (context) => CategorySingle()
+        "/": (context) => TaskOne(),
+        FoodGrid.categoryRout: (context) => CategorySingle(),
+        MoreDetails.routeName: (_) => MoreDetails(),
       },
     );
   }

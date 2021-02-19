@@ -4,33 +4,29 @@ class TaskOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-              height: double.infinity,
-              color: Colors.purple,
-              child: RotatedBox(
-                quarterTurns: 1,
-                child: Center(
-                  child: Text(
-                    "YOU ARE AWESOME",
-                    style: TextStyle(fontSize: 35, color: Colors.white),
-                  ),
-                ),
+        body: Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+            alignment: Alignment.center,
+            color: Colors.amber,
+            height: double.infinity,
+            child: RotatedBox(
+              quarterTurns: 1,
+              child: Text(
+                "YOU ARE AWESOME",
+                style: TextStyle(fontSize: 40),
               ),
             ),
           ),
-          Expanded(
-            flex: 3,
+        ),
+        Expanded(
+          flex: 3,
+          child: Container(
+            color: Colors.red,
             child: Column(
               children: [
-                Expanded(
-                  child: Container(
-                    color: Colors.deepPurple,
-                  ),
-                ),
                 Expanded(
                   child: Container(
                     color: Colors.blue,
@@ -38,14 +34,28 @@ class TaskOne extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    color: Colors.amber,
+                    color: Colors.brown,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [Text("data"), Text("data 2")],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.green,
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.black,
                   ),
                 ),
               ],
             ),
           ),
-        ],
-      ),
-    );
+        ),
+      ],
+    ));
   }
 }
