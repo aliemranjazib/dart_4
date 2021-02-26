@@ -26,6 +26,7 @@ class CategorySingle extends StatelessWidget {
             duration: categorymeals[index].duration,
             complexity: categorymeals[index].complexity,
             affordability: categorymeals[index].affordability,
+            id: categorymeals[index].id,
           );
         },
       ),

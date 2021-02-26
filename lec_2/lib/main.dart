@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lec_2/food_app/customWidget/gridWidget.dart';
+import 'package:lec_2/food_app/screens/TabActivity.dart';
 import 'package:lec_2/food_app/screens/category.dart';
 import 'package:lec_2/food_app/screens/categorydetails.dart';
 import 'package:lec_2/food_app/screens/moredetail.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ))),
       routes: {
-        "/": (context) => TaskOne(),
+        "/": (context) => Tabscreen(),
         FoodGrid.categoryRout: (context) => CategorySingle(),
         MoreDetails.routeName: (_) => MoreDetails(),
       },

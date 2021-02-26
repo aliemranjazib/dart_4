@@ -9,12 +9,14 @@ class MealsItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final String id;
   const MealsItem({
     Key key,
     this.title,
     this.imageUrl,
     this.duration,
     this.complexity,
+    this.id,
     this.affordability,
   }) : super(key: key);
 
@@ -43,7 +45,7 @@ class MealsItem extends StatelessWidget {
   }
 
   moredetail(BuildContext context) {
-    Navigator.of(context).pushNamed(MoreDetails.routeName, arguments: title);
+    Navigator.of(context).pushNamed(MoreDetails.routeName, arguments: id);
   }
 
   @override
