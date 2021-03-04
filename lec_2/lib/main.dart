@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:lec_2/food_app/customWidget/gridWidget.dart';
 import 'package:lec_2/food_app/screens/TabActivity.dart';
-import 'package:lec_2/food_app/screens/category.dart';
 import 'package:lec_2/food_app/screens/categorydetails.dart';
 import 'package:lec_2/food_app/screens/moredetail.dart';
-import 'package:lec_2/task1/task_1.dart';
 
-import 'lect_6 Whatsapp_clone_completed_/lect_5_whatsapp_ui.dart';
+import 'food_app/model/meals.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Meal> favourite;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,7 +32,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ))),
       routes: {
-        "/": (context) => Tabscreen(),
+        "/": (context) => Tabscreen(favourite),
         FoodGrid.categoryRout: (context) => CategorySingle(),
         MoreDetails.routeName: (_) => MoreDetails(),
       },

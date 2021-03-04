@@ -61,6 +61,10 @@ class MoreDetails extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.favorite),
+      ),
     );
   }
 

@@ -102,18 +102,18 @@ class _QuizAppState extends State<QuizApp> {
 
   void _checkAnswer(bool isTrue) {
     if (isTrue == questions[_questionIndex].isCorrect) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        action: SnackBarAction(label: "cancel", onPressed: () {}),
-        duration: Duration(milliseconds: 1500),
-        content: Text("TRUE"),
-      ));
+      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      //   action: SnackBarAction(label: "cancel", onPressed: () {}),
+      //   duration: Duration(milliseconds: 1500),
+      //   content: Text("TRUE"),
+      // ));
       _increments();
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        action: SnackBarAction(label: "cancel", onPressed: () {}),
-        duration: Duration(milliseconds: 1500),
-        content: Text("FALSE"),
-      ));
+      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      //   action: SnackBarAction(label: "cancel", onPressed: () {}),
+      //   duration: Duration(milliseconds: 1500),
+      //   content: Text("FALSE"),
+      // ));
     }
   }
 }
