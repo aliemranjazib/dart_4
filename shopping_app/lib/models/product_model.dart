@@ -1,4 +1,6 @@
-class Product {
+import 'package:flutter/widgets.dart';
+
+class Product with ChangeNotifier {
   final String id;
   final String title;
   final String description;
@@ -11,6 +13,12 @@ class Product {
     this.description,
     this.imageUrl,
     this.price,
-    this.isFavourite,
+    this.isFavourite = false,
   });
+
+  void setToggleStatus() {
+    isFavourite = !isFavourite;
+    print('toggler');
+    notifyListeners();
+  }
 }

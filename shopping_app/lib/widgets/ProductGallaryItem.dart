@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_app/models/product_model.dart';
 import 'package:shopping_app/screens/product_detail_screen.dart';
 
 class ProductGallaryItem extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-
-  ProductGallaryItem(this.imageUrl, this.title);
   @override
   Widget build(BuildContext context) {
+    final products = Provider.of<Product>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ClipRRect(
@@ -15,22 +14,29 @@ class ProductGallaryItem extends StatelessWidget {
         child: GridTile(
           child: InkWell(
             onTap: () {
-              Navigator.of(context)
-                  .pushNamed(ProductDetailScreen.routeName, arguments: title);
+              Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
+                  arguments: products.id);
             },
             child: Image.network(
-              imageUrl,
+              products.imageUrl,
               fit: BoxFit.cover,
             ),
           ),
           footer: GridTileBar(
             backgroundColor: Colors.black87,
             title: Text(
-              title,
+              products.title,
               textAlign: TextAlign.center,
             ),
-            leading: Icon(
-              Icons.favorite,
+            leading: IconButton(
+              icon: Icon(
+                products.isFavourite
+                    ? Icons.favorite
+                    : Icons.favorite_border_outlined,
+              ),
+              onPressed: () {
+                products.setToggleStatus();
+              },
               color: Theme.of(context).accentColor,
             ),
             trailing: Icon(
