@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_app/models/product_model.dart';
+import 'package:shopping_app/provider/CartProvider.dart';
 import 'package:shopping_app/screens/product_detail_screen.dart';
 
 class ProductGallaryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<Product>(context);
+    final cart = Provider.of<CartProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ClipRRect(
@@ -39,9 +42,12 @@ class ProductGallaryItem extends StatelessWidget {
               },
               color: Theme.of(context).accentColor,
             ),
-            trailing: Icon(
-              Icons.shopping_cart,
+            trailing: IconButton(
+              icon: Icon(Icons.shopping_cart),
               color: Theme.of(context).accentColor,
+              onPressed: () {
+                cart.addItems(products.id, products.title, products.price);
+              },
             ),
           ),
         ),

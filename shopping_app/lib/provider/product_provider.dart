@@ -37,8 +37,13 @@ class ProductProvider with ChangeNotifier {
     ),
   ];
 
+  bool selectFavourite = false;
   List<Product> get item {
     return [..._items];
+  }
+
+  List<Product> get favourite {
+    return _items.where((element) => element.isFavourite).toList();
   }
 
   void addValue() {
