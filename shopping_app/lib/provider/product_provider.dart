@@ -37,18 +37,17 @@ class ProductProvider with ChangeNotifier {
     ),
   ];
 
-  bool selectFavourite = false;
   List<Product> get item {
     return [..._items];
-  }
-
-  List<Product> get favourite {
-    return _items.where((element) => element.isFavourite).toList();
   }
 
   void addValue() {
     // item.add(value);
     notifyListeners();
+  }
+
+  List<Product> get getFavourite {
+    return _items.where((element) => element.isFavourite).toList();
   }
 
   Product findViewById(String id) {

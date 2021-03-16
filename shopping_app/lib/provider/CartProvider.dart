@@ -1,49 +1,57 @@
 import 'package:flutter/widgets.dart';
-import 'package:shopping_app/models/product_model.dart';
 
 class CartProvider with ChangeNotifier {
-  Map<String, CartItem> _items = {};
+  Map<String, CartItems> _items = {};
 
-  Map<String, CartItem> get items {
+  Map<String, CartItems> get items {
     return {..._items};
   }
 
-  int get itemCount {
+  int get countItems {
     return _items == null ? 0 : _items.length;
   }
 
-  void addItems(String productId, title, price) {
+  double totalPrice() {
+    double total = 0.0;
+    _items.forEach((key, value) {
+      total = value.price * value.quantity;
+    });
+
+    return total;
+  }
+
+  void addItem(String productId, double productprice, String producttitle) {
     if (_items.containsKey(productId)) {
       _items.update(
           productId,
-          (existingId) => CartItem(
+          (existingId) => CartItems(
               id: existingId.id,
-              title: existingId.title,
               price: existingId.price,
+              title: existingId.title,
               quantity: existingId.quantity + 1));
     } else {
       _items.putIfAbsent(
           productId,
-          () => CartItem(
-              id: DateTime.now().toString(),
-              title: title,
-              price: price,
+          () => CartItems(
+              id: productId,
+              price: productprice,
+              title: producttitle,
               quantity: 1));
     }
     notifyListeners();
   }
 }
 
-class CartItem {
-  final String title;
+class CartItems {
   final String id;
-  final int quantity;
+  final String title;
   final double price;
+  final int quantity;
 
-  CartItem({
+  CartItems({
     @required this.id,
-    @required this.title,
     @required this.price,
+    @required this.title,
     @required this.quantity,
   });
 }

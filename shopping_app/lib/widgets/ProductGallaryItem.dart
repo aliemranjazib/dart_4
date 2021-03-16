@@ -8,7 +8,7 @@ class ProductGallaryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<Product>(context);
-    final cart = Provider.of<CartProvider>(context);
+    final carts = Provider.of<CartProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -46,7 +46,7 @@ class ProductGallaryItem extends StatelessWidget {
               icon: Icon(Icons.shopping_cart),
               color: Theme.of(context).accentColor,
               onPressed: () {
-                cart.addItems(products.id, products.title, products.price);
+                carts.addItem(products.id, products.price, products.title);
               },
             ),
           ),
