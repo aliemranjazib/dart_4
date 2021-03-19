@@ -14,10 +14,14 @@ class CartProvider with ChangeNotifier {
   double totalPrice() {
     double total = 0.0;
     _items.forEach((key, value) {
-      total = value.price * value.quantity;
+      total+= value.price * value.quantity;
     });
 
     return total;
+  }
+  void removeItem(String productId) {
+    _items.remove(productId);
+    notifyListeners();
   }
 
   void addItem(String productId, double productprice, String producttitle) {

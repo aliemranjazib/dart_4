@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shopping_app/models/product_model.dart';
 import 'package:shopping_app/provider/CartProvider.dart';
 import 'package:shopping_app/provider/product_provider.dart';
+import 'package:shopping_app/widgets/CartItemss.dart';
 
 class CartDetailScreen extends StatelessWidget {
   static const routeName = "/cartsScreen";
@@ -12,7 +13,9 @@ class CartDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartData = Provider.of<CartProvider>(context);
 
-    final cartTextStyle = TextStyle(fontSize: 20, color: Colors.white);
+    final h1 = TextStyle(fontSize: 20, color: Colors.white);
+    final h2 = TextStyle(fontSize: 20, color: Colors.black);
+
     //final products = Provider.of<Product>(context);
     return Scaffold(
       appBar: AppBar(
@@ -28,19 +31,36 @@ class CartDetailScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CircleAvatar(
-                        // child: Text(products.price.toString()),
-                        ),
+                    Text(
+                      "Total price :",
+                      style: h2,
+                    ),
                     Spacer(),
                     Chip(
+                        elevation: 10,
                         backgroundColor: Theme.of(context).primaryColor,
                         label: Text(
                           "\$ ${cartData.totalPrice()}",
-                          style: cartTextStyle,
+                          style: h1,
                         )),
-                    TextButton(onPressed: () {}, child: Text("delete items")),
+                    TextButton(onPressed: () {}, child: Text("order now")),
                   ],
                 ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: cartData.items.length,
+                itemBuilder: (BuildContext context, int i) {
+                  final item = cartData.items.values.toList()[i];
+                  return CartItemss(
+                    id: item.id,
+                    title: item.title,
+                    price: item.price,
+                    quantity: item.quantity,
+                    prodctId: cartData.items.keys.toList()[i],
+                  );
+                },
               ),
             )
           ],
